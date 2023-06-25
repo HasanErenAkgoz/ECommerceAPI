@@ -45,7 +45,7 @@ namespace ECommerceAPI.Infrastructure.Services.Storage.Local
                await CopyFileAsync($"{uploadPath}\\{file.Name}", file);
                 datas.Add((file.Name, $"{path}\\{file.Name}"));
             }
-            return null;
+            return datas;
 
             //todo Eğer ki yukarıdaki if geçerli değilse burada dosyaların sunucuda yüklenirken hata alındığına dair uyarıcı bir exception oluşturulup fırlatılması gerekyior!
         }
