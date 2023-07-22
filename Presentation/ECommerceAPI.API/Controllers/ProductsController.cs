@@ -27,7 +27,7 @@ namespace ECommerceAPI.API.Controllers
         readonly private IInvoiceFileWriteRepository _ınvoiceFileWriteRepository;
         readonly private IStorageService _storageService;
 
-        public ProductsController(IProductWriteRepository productWriteRepository,IProductReadRepository productReadRepository
+        public ProductsController(IProductWriteRepository productWriteRepository, IProductReadRepository productReadRepository
             , IWebHostEnvironment webHostEnvironment, IFileWriteRepository fileWriteRepository, IProductImageFileWriteRepository productImageFileWriteRepository,
             IFileReadRepository fileReadRepository, IProductImageFileReadRepository productImageFileReadRepository, IInvoiceFileWriteRepository ınvoiceFileWriteRepository,
             IInvoiceFileReadRepository ınvoiceFileReadRepository, IStorageService storageService)
@@ -45,7 +45,7 @@ namespace ECommerceAPI.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] Pagination pagination) 
+        public async Task<IActionResult> GetAll([FromQuery] Pagination pagination)
         {
             var totalCount = _productReadRepository.GetAll(false).Count();
             var products = _productReadRepository.GetAll(false).Skip(pagination.Size * pagination.Page).Take(pagination.Size);
@@ -60,7 +60,7 @@ namespace ECommerceAPI.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            return Ok(_productReadRepository.GetByIdAsync(id,false));
+            return Ok(_productReadRepository.GetByIdAsync(id, false));
         }
 
 
@@ -103,17 +103,27 @@ namespace ECommerceAPI.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Upload()
+        public async Task<IActionResult> Upload(string id)
         {
-           var datas = await _storageService.UploadAsync("files", Request.Form.Files);
-            await _productImageFileWriteRepository.AddRangeAsync(datas.Select(d => new ProductImageFile()
-            {
-                FileName = d.fileName,
-                Path = d.pathOrContainerName,
-                Storage = _storageService.StorageName
 
-            }).ToList());
+            List<(string fileName, string PathOrContainerName)> results = await _storageService.UploadAsync("photo-images", Request.Form.Files);
+
+            Product product = await _productReadRepository.GetByIdAsync(id, true);
+
+            foreach (var result in results)
+            {
+
+                product.ProductImageFiles.Add(new()
+                {
+                    FileName = result.fileName,
+                    Path = result.PathOrContainerName,
+                    Storage = _storageService.StorageName,
+                    Products = new List<Product>() { product }
+                });
+            }
+
             await _productImageFileWriteRepository.SaveAsync();
+
             return Ok((int)HttpStatusCode.Accepted);
         }
     }
