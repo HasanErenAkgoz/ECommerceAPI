@@ -1,4 +1,5 @@
-﻿using ECommerceAPI.Application.ViewModels.Products;
+﻿using ECommerceAPI.Application.Features.Product.Commands.Create;
+using ECommerceAPI.Application.ViewModels.Products;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceAPI.Application.Validators.Product
 {
-    public class CreateProductValidator : AbstractValidator<VM_Create_Product>
+    public class CreateProductValidator : AbstractValidator<CreateProductCommandRequest>
     {
         public CreateProductValidator()
         {
