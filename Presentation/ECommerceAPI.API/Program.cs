@@ -10,11 +10,11 @@ using FluentValidation.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
-builder.Services.AddStorage<LocalStorage>();
+builder.Services.AddStorage<AzureStorage>();
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
-    policy.WithOrigins("https://localhost:4200", "http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
+    policy.WithOrigins("https://localhost:4200", "http://localhost:4200", "http://192.168.0.193:4200").AllowAnyHeader().AllowAnyMethod());
 }); 
 
 builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>())

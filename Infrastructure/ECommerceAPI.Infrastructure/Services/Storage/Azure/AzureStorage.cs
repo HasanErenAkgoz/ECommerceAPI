@@ -44,7 +44,6 @@ namespace ECommerceAPI.Infrastructure.Services.Storage.Azure
         {
             _blobContainerClient = _blobServiceClient.GetBlobContainerClient(containerName);
             await _blobContainerClient.CreateIfNotExistsAsync();
-            await _blobContainerClient.SetAccessPolicyAsync(PublicAccessType.BlobContainer);
 
             List<(string fileName, string pathOrContainerName)> datas = new();
 

@@ -29,7 +29,7 @@ namespace ECommerceAPI.Application.Features.ProductImage.Querys.GetProductImages
 
             return (product.ProductImageFiles.Select(p => new GetProductImagesQueryResponse
             {
-                Path = $"{_configuration["BaseStoregeUrl"]}/{p.Path}",
+                Path = $"{_configuration["BaseAzureStoregeUrl"]}/{p.Path}",
                 FileName = p.FileName,
                 Id = p.Id
             }).ToList());
