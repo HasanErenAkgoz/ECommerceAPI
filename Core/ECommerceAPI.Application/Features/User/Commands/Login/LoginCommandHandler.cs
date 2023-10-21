@@ -45,10 +45,6 @@ namespace ECommerceAPI.Application.Features.User.Commands.Login
                     Token = token
                 };
             }
-            //return new LoginUserErrorCommandResponse()
-            //{
-            //    Message = "Kullanıcı adı veya şifre hatalı..."
-            //};
             throw new AuthenticationErrorException();
         }
     }

@@ -17,22 +17,22 @@ namespace ECommerceAPI.Infrastructure.Services.Storage
             _storage = storage;
         }
 
-        public string StorageName { get => _storage.GetType().Name;}
+        public string StorageName { get => _storage.GetType().Name; }
 
         public async Task DeteleAsync(string pathOrContainerName, string fileName)
-        
+
             => await _storage.DeteleAsync(pathOrContainerName, fileName);
 
-        public  List<string> GetFiles(string pathOrContainerName)
-            
-            =>  _storage.GetFiles(pathOrContainerName);
+        public List<string> GetFiles(string pathOrContainerName)
+
+            => _storage.GetFiles(pathOrContainerName);
 
         public bool HasFile(string pathOrContainerName, string fileName)
-            
+
             => _storage.HasFile(pathOrContainerName, fileName);
 
         public Task<List<(string fileName, string pathOrContainerName)>> UploadAsync(string pathOrContainerName, IFormFileCollection files)
-            
-            => _storage.UploadAsync(pathOrContainerName, files );
+
+            => _storage.UploadAsync(pathOrContainerName, files);
     }
 }
