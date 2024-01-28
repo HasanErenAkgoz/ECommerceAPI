@@ -24,11 +24,11 @@ namespace ECommerceAPI.Application.Features.User.Commands.Create
         {
            CreateUserResponseDTO response = await _userService.CreateAsync(new()
             {
-                Email = request.Email,
-                NameSurname = request.NameSurname,
+                Email = request.Email.ToUpper(),
+                NameSurname = request.NameSurname.ToUpper(),
                 Password = request.Password,
                 PasswordConfirm = request.PasswordConfirm,
-                Username = request.Username,
+                Username = request.Username.ToUpper(),
             });
 
             return new CreateUserCommandResponse()

@@ -63,7 +63,7 @@ namespace ECommerceAPI.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
         {
-          GetAllProductQueryResponse response = await _mediator.Send(getAllProductQueryRequest);
+            GetAllProductQueryResponse response = await _mediator.Send(getAllProductQueryRequest);
             return Ok(response);
         }
 
