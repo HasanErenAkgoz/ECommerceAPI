@@ -48,7 +48,7 @@ namespace ECommerceAPI.Persistence.Services
 
                 await _userManager.AddLoginAsync(user, info); //AspNetUserLogins
 
-                Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime);
+                Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime,user);
                 await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration, 15);
                 return token;
            
@@ -81,7 +81,7 @@ namespace ECommerceAPI.Persistence.Services
             SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
             if (result.Succeeded) //Authentication başarılı!
             {
-                Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime);
+                Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime,user);
                                 await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration, 15);
 
                 return token;
@@ -95,7 +95,7 @@ namespace ECommerceAPI.Persistence.Services
 
             if (appUser != null && appUser?.RefreshTokenEndDate > DateTime.UtcNow)
             {
-                Token token = _tokenHandler.CreateAccessToken(60);
+                Token token = _tokenHandler.CreateAccessToken(60,appUser);
                 await _userService.UpdateRefreshToken(token.RefreshToken, appUser, token.Expiration, 15);
                 return token;
             }
