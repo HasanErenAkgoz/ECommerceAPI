@@ -5,19 +5,21 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{7591DB32-E005-4028-B88D-B37770F40B91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceAPI.Domain", "Core\ECommerceAPI.Domain\ECommerceAPI.Domain.csproj", "{C21F9C32-4D75-4481-9A7E-F87B943B2A8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceAPI.Domain", "Core\ECommerceAPI.Domain\ECommerceAPI.Domain.csproj", "{C21F9C32-4D75-4481-9A7E-F87B943B2A8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceAPI.Application", "Core\ECommerceAPI.Application\ECommerceAPI.Application.csproj", "{9448F9C7-386B-4B31-BBB4-454E98049DB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceAPI.Application", "Core\ECommerceAPI.Application\ECommerceAPI.Application.csproj", "{9448F9C7-386B-4B31-BBB4-454E98049DB5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{BACDBA87-1B61-43B0-AD94-17C5E22B16BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceAPI.Infrastructure", "Infrastructure\ECommerceAPI.Infrastructure\ECommerceAPI.Infrastructure.csproj", "{FAABC9B6-E0EE-4F08-A93D-391DB3B7104A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceAPI.Infrastructure", "Infrastructure\ECommerceAPI.Infrastructure\ECommerceAPI.Infrastructure.csproj", "{FAABC9B6-E0EE-4F08-A93D-391DB3B7104A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceAPI.Persistence", "Infrastructure\ECommerceAPI.Persistence\ECommerceAPI.Persistence.csproj", "{2CDAD066-312D-4E8E-88AB-F416DFCBBF1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceAPI.Persistence", "Infrastructure\ECommerceAPI.Persistence\ECommerceAPI.Persistence.csproj", "{2CDAD066-312D-4E8E-88AB-F416DFCBBF1C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{66A11B7F-39E0-4FBE-BD77-BB46DB0779C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceAPI.API", "Presentation\ECommerceAPI.API\ECommerceAPI.API.csproj", "{1D39BE29-EA81-4D6C-A02E-F2DEF9111815}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceAPI.API", "Presentation\ECommerceAPI.API\ECommerceAPI.API.csproj", "{1D39BE29-EA81-4D6C-A02E-F2DEF9111815}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceAPI.SignalR", "Infrastructure\ECommerceAPI.SignalR\ECommerceAPI.SignalR.csproj", "{1FA9BAFF-E7B8-449E-8650-59295FD5540A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{1D39BE29-EA81-4D6C-A02E-F2DEF9111815}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D39BE29-EA81-4D6C-A02E-F2DEF9111815}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D39BE29-EA81-4D6C-A02E-F2DEF9111815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FA9BAFF-E7B8-449E-8650-59295FD5540A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FA9BAFF-E7B8-449E-8650-59295FD5540A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FA9BAFF-E7B8-449E-8650-59295FD5540A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FA9BAFF-E7B8-449E-8650-59295FD5540A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{FAABC9B6-E0EE-4F08-A93D-391DB3B7104A} = {BACDBA87-1B61-43B0-AD94-17C5E22B16BF}
 		{2CDAD066-312D-4E8E-88AB-F416DFCBBF1C} = {BACDBA87-1B61-43B0-AD94-17C5E22B16BF}
 		{1D39BE29-EA81-4D6C-A02E-F2DEF9111815} = {66A11B7F-39E0-4FBE-BD77-BB46DB0779C3}
+		{1FA9BAFF-E7B8-449E-8650-59295FD5540A} = {BACDBA87-1B61-43B0-AD94-17C5E22B16BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3DCFCE27-528D-4757-8239-5DBA6CF6BA60}

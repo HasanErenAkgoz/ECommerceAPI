@@ -6,6 +6,8 @@ using ECommerceAPI.Infrastructure;
 using ECommerceAPI.Infrastructure.Filter;
 using ECommerceAPI.Infrastructure.Services.Storage.Azure;
 using ECommerceAPI.Persistence;
+using ECommerceAPI.SignalR;
+using ECommerceAPI.SignalR.Hubs;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -16,9 +18,11 @@ using Serilog.Sinks.PostgreSQL;
 using System.Security.Claims;
 using System.Text;
 
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
+builder.Services.AddSignalRServices();
 builder.Services.AddStorage<AzureStorage>();
 builder.Services.AddCors(options =>
 {
@@ -112,5 +116,5 @@ app.Use(async (context,next) =>
 });
 
 app.MapControllers();
-
+app.MapHubs();
 app.Run();
