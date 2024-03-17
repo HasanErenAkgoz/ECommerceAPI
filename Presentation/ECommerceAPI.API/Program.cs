@@ -27,7 +27,7 @@ builder.Services.AddStorage<AzureStorage>();
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
-    policy.WithOrigins("https://localhost:4200", "http://localhost:4200", "http://192.168.0.193:4200").AllowAnyHeader().AllowAnyMethod());
+    policy.WithOrigins("https://localhost:4200", "http://localhost:4200", "http://192.168.0.193:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 });
 
 Logger logger = new LoggerConfiguration()
