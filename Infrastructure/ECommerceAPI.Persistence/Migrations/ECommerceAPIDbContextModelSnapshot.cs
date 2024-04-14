@@ -381,6 +381,9 @@ namespace ECommerceAPI.Persistence.Migrations
                 {
                     b.HasBaseType("ECommerceAPI.Domain.Entities.File.File");
 
+                    b.Property<bool>("ShowCase")
+                        .HasColumnType("boolean");
+
                     b.HasDiscriminator().HasValue("ProductImageFile");
                 });
 

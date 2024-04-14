@@ -9,7 +9,7 @@ namespace ECommerceAPI.Application.Features.Product.Querys.GetAll
 {
     public class GetAllProductQueryResponse
     {
-        public int TotalCount { get; set; }
-        public List<ProductDTO> Products { get; set; }
+        public int TotalProductCount { get; set; }
+        public object Products { get; set; }
     }
 }

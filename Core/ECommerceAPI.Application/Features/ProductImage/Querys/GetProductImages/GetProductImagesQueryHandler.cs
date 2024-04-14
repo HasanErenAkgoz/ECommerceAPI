@@ -31,7 +31,8 @@ namespace ECommerceAPI.Application.Features.ProductImage.Querys.GetProductImages
             {
                 Path = $"{_configuration["BaseAzureStoregeUrl"]}/{p.Path}",
                 FileName = p.FileName,
-                Id = p.Id
+                Id = p.Id,
+                ShowCase = p.ShowCase,
             }).ToList());
         }
     }

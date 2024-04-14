@@ -5,6 +5,7 @@ using ECommerceAPI.Application.Validators.Product;
 using ECommerceAPI.Infrastructure;
 using ECommerceAPI.Infrastructure.Filter;
 using ECommerceAPI.Infrastructure.Services.Storage.Azure;
+using ECommerceAPI.Infrastructure.Services.Storage.Local;
 using ECommerceAPI.Persistence;
 using ECommerceAPI.SignalR;
 using ECommerceAPI.SignalR.Hubs;
@@ -93,12 +94,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
 app.UseStaticFiles();
+app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
 app.UseSerilogRequestLogging();
 app.UseHttpLogging();
-
 app.UseCors();
 
 app.UseHttpsRedirection();

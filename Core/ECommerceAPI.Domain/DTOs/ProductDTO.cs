@@ -1,4 +1,5 @@
 ﻿using ECommerceAPI.Domain.Entities.Common;
+using ECommerceAPI.Domain.Entities.File;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace ECommerceAPI.Domain.DTOs
         public string Name { get; set; }
         public int Stock { get; set; }
         public float Price { get; set; }
+        public List<ProductImageFile> ProductImageFiles { get; set; }
     }
 }
