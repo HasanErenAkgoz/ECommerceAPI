@@ -27,10 +27,14 @@ namespace ECommerceAPI.Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Order>().HasKey(b => b.Id);
+            builder.Entity<Order>()
+                .HasKey(b => b.Id);
 
-            builder.Entity<Basket>().HasOne(b => b.Order).WithOne(o => o.Basket)
+            builder.Entity<Basket>()
+                .HasOne(b => b.Order)
+                .WithOne(o => o.Basket)
                 .HasForeignKey<Order>(b => b.Id);
+
             base.OnModelCreating(builder);
         }
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

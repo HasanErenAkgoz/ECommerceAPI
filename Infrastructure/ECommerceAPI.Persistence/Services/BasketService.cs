@@ -37,37 +37,37 @@ namespace ECommerceAPI.Persistence.Services
         private async Task<Basket?> ContextUser()
         {
             var username = _httpContextAccessor?.HttpContext?.User?.Identity?.Name;
-
             if (!string.IsNullOrEmpty(username))
             {
-               AppUser? user = await _userManager.Users.Include(u => u.Baskets)
-                    .FirstOrDefaultAsync(u => u.UserName == username);
+                AppUser? user = await _userManager.Users
+                         .Include(u => u.Baskets)
+                         .FirstOrDefaultAsync(u => u.UserName == username);
 
                 var _basket = from basket in user.Baskets
                               join order in _orderReadRepository.Table
-                              on basket.Id equals order.Id into basketOrders
-                              from order in basketOrders.DefaultIfEmpty()
+                              on basket.Id equals order.Id into BasketOrders
+                              from order in BasketOrders.DefaultIfEmpty()
                               select new
                               {
                                   Basket = basket,
-                                  Order = order,
+                                  Order = order
                               };
 
                 Basket? targetBasket = null;
                 if (_basket.Any(b => b.Order is null))
-                {
                     targetBasket = _basket.FirstOrDefault(b => b.Order is null)?.Basket;
-                }
                 else
+                {
                     targetBasket = new();
-                    user.Baskets.Add(new());
+                    user.Baskets.Add(targetBasket);
+                }
 
-               await _basketWriteRepository.SaveAsync();
+                await _basketWriteRepository.SaveAsync();
                 return targetBasket;
             }
+            throw new Exception("Beklenmeyen bir hatayla karşılaşıldı...");
+        }
 
-            throw new Exception("An unexpected error encountered");
-        } 
 
         public async Task AddItemToBasketAsync(VM_Create_Basket_Item basketItem)
         {
@@ -78,11 +78,8 @@ namespace ECommerceAPI.Persistence.Services
                 BasketItem _basketItem = await _basketItemReadRepository.GetSingleAsync(p => p.BasketId == basket.Id && p.ProductId == Guid.Parse(basketItem.ProductId));
 
                 if (_basketItem != null)
-                {
-                    _basketItem.Quentity++; 
-                }
+                    _basketItem.Quentity++;
                 else
-                {
                     await _basketItemWriteRepository.AddAsync(new()
                     {
                         BasketId = basket.Id,
@@ -90,8 +87,7 @@ namespace ECommerceAPI.Persistence.Services
                         Quentity = basketItem.Quantity
                     });
 
-                    await  _basketWriteRepository.SaveAsync();
-                }
+                await _basketItemWriteRepository.SaveAsync();
             }
 
         }
