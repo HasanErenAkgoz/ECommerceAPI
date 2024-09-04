@@ -33,6 +33,9 @@
   <ItemGroup>
     <Folder Include="Features\BasketItem\Query\GetAll\" />
     <Folder Include="Features\BasketItem\Query\GetById\" />
+    <Folder Include="Features\Order\Command\Delete\" />
+    <Folder Include="Features\Order\Command\Update\" />
+    <Folder Include="Features\Order\Query\" />
     <Folder Include="Features\User\Querys\" />
   </ItemGroup>
 

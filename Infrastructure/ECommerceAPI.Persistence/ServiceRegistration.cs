@@ -1,24 +1,18 @@
-﻿using ECommerceAPI.Persistence.Contexts;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using ECommerceAPI.Application.Abstractions.Services;
+using ECommerceAPI.Application.Abstractions.Services.Authentication;
 using ECommerceAPI.Application.Repositories;
+using ECommerceAPI.Application.Repositories.File;
+using ECommerceAPI.Application.Repositories.InvoiceFile;
+using ECommerceAPI.Application.Repositories.ProductImageFile;
+using ECommerceAPI.Domain.Entities.Identity;
+using ECommerceAPI.Persistence.Contexts;
 using ECommerceAPI.Persistence.Repositories;
 using ECommerceAPI.Persistence.Repositories.File;
-using ECommerceAPI.Application.Repositories.File;
-using ECommerceAPI.Application.Repositories.ProductImageFile;
-using ECommerceAPI.Persistence.Repositories.ProductImageFile;
-using ECommerceAPI.Application.Repositories.InvoiceFile;
 using ECommerceAPI.Persistence.Repositories.InvoiceFile;
-using ECommerceAPI.Domain.Entities.Identity;
-using ECommerceAPI.Application.Abstractions.Services;
+using ECommerceAPI.Persistence.Repositories.ProductImageFile;
 using ECommerceAPI.Persistence.Services;
-using ECommerceAPI.Application.Abstractions.Services.Authentication;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ECommerceAPI.Persistence
 {
@@ -62,6 +56,7 @@ namespace ECommerceAPI.Persistence
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IBasketService, BasketService>();
+            services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IExternalAuthentication, AuthService>();
             services.AddScoped<IInternalAuthentication, AuthService>();
